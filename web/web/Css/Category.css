@@ -1,0 +1,113 @@
+@charset "UTF-8";
+/* CSS Document */
+
+.pic {
+	/*border: 10px solid #FFF ;*/
+	float: left;
+	height: 279px;
+	width: 372px;
+	margin: 10px;
+	/*border-bottom: 30px solid #FFF;*/
+	overflow: hidden;
+	
+}
+.back{
+	background-color:#FFF;
+	width:392px;
+	height:335px;
+	margin-right:8px;
+	margin-top:12px;
+	display:inline-block;
+}
+.label{
+	
+	text-align:center;
+	font-size:20px;
+	font:"MS Serif", "New York", serif;
+	
+}
+/*GROW*/
+.grow img {
+  height: 300px;
+  width: 400px;
+ 
+  -webkit-transition: all 1s ease;
+     -moz-transition: all 1s ease;
+       -o-transition: all 1s ease;
+      -ms-transition: all 1s ease;
+          transition: all 1s ease;
+		  
+}
+ 
+.grow img:hover {
+  width: 500px;
+  height: 400px;
+}
+
+/*SHRINK*/
+.shrink img {
+  height: 500px;
+  width: 500px;
+ 
+  -webkit-transition: all 1s ease;
+     -moz-transition: all 1s ease;
+       -o-transition: all 1s ease;
+      -ms-transition: all 1s ease;
+          transition: all 1s ease;
+}
+ 
+.shrink img:hover {
+  width: 400px;
+  height: 400px;
+}
+/*SIDEPAN*/
+.sidepan img {
+  margin-left: 0px;
+  -webkit-transition: margin 1s ease;
+     -moz-transition: margin 1s ease;
+       -o-transition: margin 1s ease;
+      -ms-transition: margin 1s ease;
+          transition: margin 1s ease;
+}
+ 
+.sidepan img:hover {
+  margin-left: -200px;
+}
+/*VERTPAN*/
+.vertpan img {
+  margin-top: 0px;
+  -webkit-transition: margin 1s ease;
+     -moz-transition: margin 1s ease;
+       -o-transition: margin 1s ease;
+      -ms-transition: margin 1s ease;
+          transition: margin 1s ease;
+}
+ 
+.vertpan img:hover {
+  margin-top: -200px;
+}
+/*BLUR*/
+.blur img {
+  -webkit-transition: all 1s ease;
+     -moz-transition: all 1s ease;
+       -o-transition: all 1s ease;
+      -ms-transition: all 1s ease;
+          transition: all 1s ease;
+}
+ 
+.blur img:hover {
+  -webkit-filter: blur(5px);
+}
+/*B&W*/
+.bw {
+  -webkit-transition: all 1s ease;
+     -moz-transition: all 1s ease;
+       -o-transition: all 1s ease;
+      -ms-transition: all 1s ease;
+          transition: all 1s ease;
+}
+ 
+.bw:hover {
+  -webkit-filter: grayscale(100%);
+}
+
