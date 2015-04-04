@@ -5,7 +5,7 @@ package Bean;
  * @author niponsarikan
  */
 public class Register {
-    
+
     // For Customer
     private String username;
     private String password;
@@ -13,8 +13,7 @@ public class Register {
     private String lastname;
     private String email;
     private String phone;
-    private String date;
-    private String status;
+
     //Only For Photographer
     private String address;
     private String distinct;
@@ -23,60 +22,37 @@ public class Register {
     private String country;
     private String paypal;
 
-    
     //Constructor for Photographer
-    public Register(String username,String password,String firstname,String lastname,String email,String phone,
-            String date,String status,String address,String distinct,String province,String zipcode,String country,String paypal){
-        
-        this.username=username;
-        this.password=password;
-        this.firstname=firstname;
-        this.lastname=lastname;
-        this.email=email;
-        this.phone=phone;
-        this.date=date;
-        this.status=status;
-        this.address=address;
-        this.distinct=distinct;
-        this.province=province;
-        this.zipcode=zipcode;
-        this.country=country;
-        this.paypal=paypal;
+    public Register(String username, String password, String firstname, String lastname, String email, String phone,
+            String address, String distinct, String province, String zipcode, String country, String paypal) {
+
+        this.username = username;
+        this.password = password;
+        this.firstname = firstname;
+        this.lastname = lastname;
+        this.email = email;
+        this.phone = phone;
+
+        this.address = address;
+        this.distinct = distinct;
+        this.province = province;
+        this.zipcode = zipcode;
+        this.country = country;
+        this.paypal = paypal;
     }
-    
+
     //For Customer
-    public Register(String username,String password,String firstname,String lastname,String email,String phone,
-            String date,String status){
-        
-        this.username=username;
-        this.password=password;
-        this.firstname=firstname;
-        this.lastname=lastname;
-        this.email=email;
-        this.phone=phone;
-        this.date=date;
-        this.status=status;
-    }
-    
-    
-    
-    
-    public String getDate() {
-        return date;
+    public Register(String username, String password, String firstname, String lastname, String email, String phone) {
+
+        this.username = username;
+        this.password = password;
+        this.firstname = firstname;
+        this.lastname = lastname;
+        this.email = email;
+        this.phone = phone;
+
     }
 
-    public void setDate(String date) {
-        this.date = date;
-    }
-
-    public String getStatus() {
-        return status;
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
-    }
-    
     public String getUsername() {
         return username;
     }
@@ -172,9 +148,5 @@ public class Register {
     public void setPaypal(String paypal) {
         this.paypal = paypal;
     }
-    
-    
-    
-    
-    
+
 }
