@@ -6,13 +6,14 @@ package Bean;
  */
 public class Register {
 
-    // For Customer
+    // For Customer , Photographer(Merchant)
     private String username;
     private String password;
     private String firstname;
     private String lastname;
     private String email;
     private String phone;
+    private String date;
 
     //Only For Photographer
     private String address;
@@ -22,6 +23,12 @@ public class Register {
     private String country;
     private String paypal;
 
+    
+    // Default Constructor
+    public Register(){
+        
+    }
+    
     //Constructor for Photographer
     public Register(String username, String password, String firstname, String lastname, String email, String phone,
             String address, String distinct, String province, String zipcode, String country, String paypal) {
@@ -149,4 +156,29 @@ public class Register {
         this.paypal = paypal;
     }
 
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+    private String status;
+    private String id;
 }

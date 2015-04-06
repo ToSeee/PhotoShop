@@ -17,11 +17,11 @@ import javax.servlet.http.HttpServlet;
  */
 public class RegLogDB extends HttpServlet {
 
-    Connection conn;
-    String db_driver = "com.mysql.jdbc.Driver";
-    String db_url = "jdbc:mysql://localhost:3306/Photo?zeroDateTimeBehavior=convertToNull";
-    String db_user = "root";
-    String db_pass = "root";
+    private Connection conn;
+    private String db_driver = "com.mysql.jdbc.Driver";
+    private String db_url = "jdbc:mysql://localhost:3306/Photo?zeroDateTimeBehavior=convertToNull";
+    private String db_user = "root";
+    private String db_pass = "root";
 
     public RegLogDB() {
         try {
@@ -129,18 +129,18 @@ public class RegLogDB extends HttpServlet {
 
         } catch (SQLException ex) {
             Logger.getLogger(RegLogDB.class.getName()).log(Level.SEVERE, null, ex);
+
         }
         return status;
     }
 
-    public static void main(String[] args) {
-        RegLogDB a = new RegLogDB();
-        System.out.println(a.checkLogin("maof", "maof"));
+    /*public static void main(String[] args) {
+       
 
-        /*
+        
          java.util.Date dt = new java.util.Date();
          java.text.SimpleDateFormat sdf= new java.text.SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-         String currentTime = sdf.format(dt);*/
-    }
+         String currentTime = sdf.format(dt);
+    }*/
 
 }
