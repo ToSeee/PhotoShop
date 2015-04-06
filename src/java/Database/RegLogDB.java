@@ -6,6 +6,7 @@
 package Database;
 
 import Bean.Register;
+import java.io.File;
 import java.sql.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -18,6 +19,8 @@ import javax.servlet.http.HttpServlet;
 public class RegLogDB extends HttpServlet {
 
     private Connection conn;
+    
+    //  *** Information Can Change Depend on Computer Mysql Directories ^_^  eiei
     private String db_driver = "com.mysql.jdbc.Driver";
     private String db_url = "jdbc:mysql://localhost:3306/Photo?zeroDateTimeBehavior=convertToNull";
     private String db_user = "root";
@@ -81,6 +84,7 @@ public class RegLogDB extends HttpServlet {
     public void addMerchant(Register merchant) {
         try {
             PreparedStatement mer = conn.prepareStatement("insert into merchant values(default,?,?,?,?,?,?,?,?,?,?,?,?,'Yes',now())");
+            PreparedStatement max_id = conn.prepareStatement("select max(m_id) from merchant");
             mer.setString(1, merchant.getFirstname());
             mer.setString(2, merchant.getLastname());
             mer.setString(3, merchant.getUsername());
@@ -94,6 +98,12 @@ public class RegLogDB extends HttpServlet {
             mer.setString(11, merchant.getZipcode());
             mer.setString(12, merchant.getCountry());
             mer.executeUpdate();
+            ResultSet rs = max_id.executeQuery();
+            rs.next();
+            String id = rs.getString(1);
+            RegLogDB obj = new RegLogDB();
+            obj.createFolder(id);
+            
         } catch (SQLException ex) {
             Logger.getLogger(RegLogDB.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -133,14 +143,27 @@ public class RegLogDB extends HttpServlet {
         }
         return status;
     }
-
-    /*public static void main(String[] args) {
-       
-
+    
+    public void createFolder(String mID){
         
-         java.util.Date dt = new java.util.Date();
-         java.text.SimpleDateFormat sdf= new java.text.SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-         String currentTime = sdf.format(dt);
+        File file = new File("./PhotoStore/"+mID);
+	if (!file.exists()) {
+		if (file.mkdir()) {
+			System.out.println("Directory is created!");
+		} else {
+			System.out.println("Failed to create directory!");
+		}
+	}
+    }
+
+   /* public static void main(String[] args) {
+       
+        
+        
+        
+         //java.util.Date dt = new java.util.Date();
+         //java.text.SimpleDateFormat sdf= new java.text.SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+         //String currentTime = sdf.format(dt);
     }*/
 
 }

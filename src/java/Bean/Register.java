@@ -14,6 +14,8 @@ public class Register {
     private String email;
     private String phone;
     private String date;
+    private String status;
+    private String id;
 
     //Only For Photographer
     private String address;
@@ -179,6 +181,5 @@ public class Register {
     public void setId(String id) {
         this.id = id;
     }
-    private String status;
-    private String id;
+    
 }
