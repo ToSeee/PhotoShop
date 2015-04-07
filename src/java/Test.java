@@ -17,6 +17,8 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import Bean.*;
+import Database.*;
 
 /**
  *
@@ -42,7 +44,9 @@ public class Test extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-       //asd
+        Register a = new Register(null, null, null, null, null, null);
+        RegLogDB b = new RegLogDB();
+        b.checkLogin("Username", "Pass");
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
