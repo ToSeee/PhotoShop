@@ -8,6 +8,8 @@ package Database;
 import Bean.Register;
 import java.io.File;
 import java.sql.*;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.http.HttpServlet;
@@ -112,12 +114,12 @@ public class RegLogDB extends HttpServlet {
     /*
     
      Check id&password when login
-     if correct return true
-     Otherwise return false
+     if correct return role and id
+     Otherwise return none
     
      */
-    public boolean checkLogin(String username, String pass) {
-        boolean status = false;
+    public List checkLogin(String username, String pass) {
+        List<String> status = new LinkedList<String>();
         try {
             PreparedStatement admin = conn.prepareStatement("select * from Admin where A_Username = ? and A_Password =?;");
             PreparedStatement merchant = conn.prepareStatement("select * from Merchant where M_Username = ? and M_password=?;");
@@ -135,7 +137,22 @@ public class RegLogDB extends HttpServlet {
             ResultSet mer = merchant.executeQuery();
             ResultSet cus = customer.executeQuery();
 
-            status = ad.next() || mer.next() || cus.next();
+            if(ad.next()){
+                status.add("admin");
+                status.add(ad.getString(1));
+            }
+            else if(mer.next()){
+                status.add("merchant");
+                status.add(mer.getString(1));
+            }
+            else if(cus.next()){
+                status.add("customer");
+                status.add(cus.getString(1));
+            }
+            else{
+                status.add("none");
+                status.add("none");
+            }
 
         } catch (SQLException ex) {
             Logger.getLogger(RegLogDB.class.getName()).log(Level.SEVERE, null, ex);
@@ -156,14 +173,17 @@ public class RegLogDB extends HttpServlet {
 	}
     }
 
-   /* public static void main(String[] args) {
+   public static void main(String[] args) {
        
+         List<String> a = new LinkedList<String>();
+         a.add("a");
+         a.add("c");
         
-        
+    
         
          //java.util.Date dt = new java.util.Date();
          //java.text.SimpleDateFormat sdf= new java.text.SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
          //String currentTime = sdf.format(dt);
-    }*/
+    }
 
 }
