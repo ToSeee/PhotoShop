@@ -44,7 +44,7 @@ public class Test extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        Register a = new Register(null, null, null, null, null, null);
+        User a = new User(null, null, null, null, null, null);
         RegLogDB b = new RegLogDB();
         b.checkLogin("Username", "Pass");
     }

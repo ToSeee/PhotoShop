@@ -60,8 +60,9 @@ public class UploadServlet extends HttpServlet {
         } else {
             request.setAttribute("message",
                     "Sorry this Servlet only handles file upload request");
+            
         }
-        request.getRequestDispatcher("/ResultPage.jsp").forward(request, response);
+       // request.getRequestDispatcher("/ResultPage.jsp").forward(request, response);
 
     }
 

@@ -5,7 +5,7 @@ package controller;
  * @author HenGz
  */
 
-import Bean.Register;
+import Bean.User;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.RequestDispatcher;
@@ -41,7 +41,7 @@ public class CheckServlet extends HttpServlet {
             
             Boolean s = (address.equals("")) && (distinct.equals("")) && (province.equals("")) && (zipcode.equals("")) && (country.equals("")) && (ppid.equals(""))  ;
             
-            Register regist = new Register();
+            User regist = new User();
             
           
             

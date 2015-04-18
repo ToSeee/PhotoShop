@@ -24,6 +24,7 @@ import java.util.logging.Logger;
 public class ManageProduct {
 
     private Connection conn;
+   
 
     //  *** Information Can Change Depend on Computer Mysql Directories ^_^  eiei
     private String db_driver = "com.mysql.jdbc.Driver";
@@ -33,6 +34,7 @@ public class ManageProduct {
 
     public ManageProduct() {
         try {
+            
             Class.forName(db_driver);
 
             conn = DriverManager.getConnection(db_url, db_user, db_pass);
@@ -124,9 +126,19 @@ public class ManageProduct {
 
         }
     }
+    
+   
+
+    
+
 
     public static void main(String[] args) {
-
+        
+        String UPLOAD_DIRECTORY = "/Users/niponsarikan/Desktop/File";
+        ManageProduct a = new ManageProduct();
+        
+        
+        System.out.print(System.getProperty("path.separator"));
          //java.util.Date dt = new java.util.Date();
         //java.text.SimpleDateFormat sdf= new java.text.SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         //String currentTime = sdf.format(dt);

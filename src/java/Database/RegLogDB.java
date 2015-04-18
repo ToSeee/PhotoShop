@@ -5,7 +5,7 @@
  */
 package Database;
 
-import Bean.Register;
+import Bean.User;
 import java.io.File;
 import java.sql.*;
 import java.util.LinkedList;
@@ -68,9 +68,9 @@ public class RegLogDB extends HttpServlet {
         return status;
     }
 
-    public void addCustomer(Register customer) {
+    public void addCustomer(User customer) {
         try {
-            PreparedStatement cus = conn.prepareStatement("insert into customer values(default,?,?,?,?,?,?,'Yes',now())");
+            PreparedStatement cus = conn.prepareStatement("insert into customer values(default,?,?,?,?,?,?,'Yes',now(),0)");
             cus.setString(1, customer.getFirstname());
             cus.setString(2, customer.getLastname());
             cus.setString(3, customer.getUsername());
@@ -83,9 +83,9 @@ public class RegLogDB extends HttpServlet {
         }
     }
 
-    public void addMerchant(Register merchant) {
+    public void addMerchant(User merchant) {
         try {
-            PreparedStatement mer = conn.prepareStatement("insert into merchant values(default,?,?,?,?,?,?,?,?,?,?,?,?,'Yes',now())");
+            PreparedStatement mer = conn.prepareStatement("insert into merchant values(default,?,?,?,?,?,?,?,?,?,?,?,?,'Yes',now(),0)");
             PreparedStatement max_id = conn.prepareStatement("select max(m_id) from merchant");
             mer.setString(1, merchant.getFirstname());
             mer.setString(2, merchant.getLastname());
@@ -173,17 +173,15 @@ public class RegLogDB extends HttpServlet {
 	}
     }
 
-   public static void main(String[] args) {
+   /*public static void main(String[] args) {
        
-         List<String> a = new LinkedList<String>();
-         a.add("a");
-         a.add("c");
+        
         
     
         
          //java.util.Date dt = new java.util.Date();
          //java.text.SimpleDateFormat sdf= new java.text.SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
          //String currentTime = sdf.format(dt);
-    }
+    }*/
 
 }

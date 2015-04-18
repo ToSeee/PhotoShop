@@ -4,7 +4,7 @@ package Bean;
  *
  * @author niponsarikan
  */
-public class Register {
+public class User {
 
     // For Customer , Photographer(Merchant)
     private String username;
@@ -16,23 +16,28 @@ public class Register {
     private String date;
     private String status;
     private String id;
+    private String buyamount;
 
     //Only For Photographer
     private String address;
     private String distinct;
     private String province;
+
+   
     private String zipcode;
     private String country;
     private String paypal;
+    private String saleamount;
 
     
+    
     // Default Constructor
-    public Register(){
+    public User(){
         
     }
     
     //Constructor for Photographer
-    public Register(String username, String password, String firstname, String lastname, String email, String phone,
+    public User(String username, String password, String firstname, String lastname, String email, String phone,
             String address, String distinct, String province, String zipcode, String country, String paypal) {
 
         this.username = username;
@@ -48,10 +53,11 @@ public class Register {
         this.zipcode = zipcode;
         this.country = country;
         this.paypal = paypal;
+        
     }
 
     //For Customer
-    public Register(String username, String password, String firstname, String lastname, String email, String phone) {
+    public User(String username, String password, String firstname, String lastname, String email, String phone) {
 
         this.username = username;
         this.password = password;
@@ -181,5 +187,20 @@ public class Register {
     public void setId(String id) {
         this.id = id;
     }
+    public String getSaleamount() {
+        return saleamount;
+    }
+
+    public void setSaleamount(String saleamount) {
+        this.saleamount = saleamount;
+    }
     
+     public String getBuyamount() {
+        return buyamount;
+    }
+
+    public void setBuyamount(String buyamount) {
+        this.buyamount = buyamount;
+    }
+
 }
