@@ -20,7 +20,19 @@ public class Product {
     private String status;
     private String cateID;
     private String mID;
-    private String salecount;
+    private int salecount;
+
+  
+
+   
+    
+    //Use for Show
+    private String cateName;
+    private String mFirstName;
+    private String mLastName;
+    private double SaleAmount;
+
+    
 
     public Product() {
 
@@ -51,7 +63,7 @@ public class Product {
         this.name = name;
     }
 
-    public Double getPrice() {
+    public double getPrice() {
         return price;
     }
 
@@ -107,12 +119,47 @@ public class Product {
         this.mID = mID;
     }
 
-    public String getSalecount() {
+    public int getSalecount() {
         return salecount;
     }
 
-    public void setSalecount(String salecount) {
+    public void setSalecount(int salecount) {
         this.salecount = salecount;
     }
 
+    
+    
+    public String getCateName() {
+        return cateName;
+    }
+
+    public void setCateName(String cateName) {
+        this.cateName = cateName;
+    }
+
+    public String getmFirstName() {
+        return mFirstName;
+    }
+
+    public void setmFirstName(String mFirstName) {
+        this.mFirstName = mFirstName;
+    }
+
+    public String getmLastName() {
+        return mLastName;
+    }
+
+    public void setmLastName(String mLastName) {
+        this.mLastName = mLastName;
+    }
+    
+    public double getSaleAmount() {
+        return SaleAmount;
+    }
+
+    public void setSaleAmount(double SaleAmount) {
+        this.SaleAmount = SaleAmount;
+    }
+    
+    
 }

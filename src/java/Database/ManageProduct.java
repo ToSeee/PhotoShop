@@ -6,6 +6,7 @@
 package Database;
 
 import Bean.Product;
+import Bean.User;
 import java.io.File;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -127,6 +128,8 @@ public class ManageProduct {
         }
     }
     
+    
+    
    
 
     
@@ -134,11 +137,24 @@ public class ManageProduct {
 
     public static void main(String[] args) {
         
-        String UPLOAD_DIRECTORY = "/Users/niponsarikan/Desktop/File";
-        ManageProduct a = new ManageProduct();
+        //String UPLOAD_DIRECTORY = "/Users/niponsarikan/Desktop/File";
+        //ManageProduct a = new ManageProduct();
+        List <User> a = new LinkedList<User>();
+        
+       
+        for(int i=0;i<5;i++){
+            User b = new User();
+            b.setId(Integer.toString(i));
+            a.add(b);
+        }
+        
+       
+            
+            
         
         
-        System.out.print(System.getProperty("path.separator"));
+        
+        //System.out.print(System.getProperty("path.separator"));
          //java.util.Date dt = new java.util.Date();
         //java.text.SimpleDateFormat sdf= new java.text.SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         //String currentTime = sdf.format(dt);
