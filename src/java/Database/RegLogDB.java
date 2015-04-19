@@ -122,8 +122,8 @@ public class RegLogDB extends HttpServlet {
         List<String> status = new LinkedList<String>();
         try {
             PreparedStatement admin = conn.prepareStatement("select * from Admin where A_Username = ? and A_Password =?;");
-            PreparedStatement merchant = conn.prepareStatement("select * from Merchant where M_Username = ? and M_password=?;");
-            PreparedStatement customer = conn.prepareStatement("select * from Customer where C_Username = ? and C_Password=?;");
+            PreparedStatement merchant = conn.prepareStatement("select * from Merchant where M_Username = ? and M_password=? and M_Status ='Yes';");
+            PreparedStatement customer = conn.prepareStatement("select * from Customer where C_Username = ? and C_Password=? and C_Status ='Yes';");
 
             admin.setString(1, username);
             merchant.setString(1, username);
