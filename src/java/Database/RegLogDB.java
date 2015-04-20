@@ -26,7 +26,7 @@ public class RegLogDB extends HttpServlet {
     private String db_driver = "com.mysql.jdbc.Driver";
     private String db_url = "jdbc:mysql://localhost:3306/Photo?zeroDateTimeBehavior=convertToNull";
     private String db_user = "root";
-    private String db_pass = "root";
+    private String db_pass = "";
 
     public RegLogDB() {
         try {
@@ -174,6 +174,9 @@ public class RegLogDB extends HttpServlet {
     }
 
    /*public static void main(String[] args) {
+       RegLogDB a = new RegLogDB();
+       List log = a.checkLogin("A","A");
+       System.out.print(log.get(0));
        
         
         
