@@ -194,9 +194,9 @@ public class RegLogDB extends HttpServlet {
         a.addCustomer(user);
         
     }*/
-    public static void main(String[] args){
+    /*public static void main(String[] args){
         RegLogDB a = new RegLogDB();
         a.createFolder("H");
-    }
+    }*/
 
 }
