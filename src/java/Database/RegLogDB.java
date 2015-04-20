@@ -164,7 +164,7 @@ public class RegLogDB extends HttpServlet {
     public void createFolder(String mID){
         
         File file = new File("./PhotoStore/"+mID);
-        File file2
+        
 	if (!file.exists()) {
 		if (file.mkdir()) {
 			System.out.println("Directory is created!");
