@@ -67,6 +67,14 @@ public class CheckServlet extends HttpServlet {
             
         }
     }
+    
+    /*public static void main(String[] args) {
+       RegLogDB a = new RegLogDB();
+       User user = new User("H","H","H","H","H@hot","123","H","H","H","H","H","H");
+       a.addMerchant(user);
+       
+
+    }*/
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**

@@ -165,8 +165,10 @@ public class RegLogDB extends HttpServlet {
         
         //File file = new File("./PhotoStore/"+mID);
         //File file = new File(".\\PhotoStore\\"+mID);
-        File file = new File("."+File.separator+"PhotoStore"+File.separator+mID);
-        File water = new File("."+File.separator+"Watermark"+File.separator+mID);
+        //File file = new File("."+File.separator+"PhotoStore"+File.separator+mID);
+        File file = new File("D:"+File.separator+"OTOHP"+File.separator+"PhotoShop"+File.separator+"PhotoStore"+File.separator+mID);
+        //File water = new File("."+File.separator+"Watermark"+File.separator+mID);
+        File water = new File("D:"+File.separator+"OTOHP"+File.separator+"PhotoShop"+File.separator+"Watermark"+File.separator+mID);
         
 	if (!file.exists()&&!water.exists()) {
 		if (file.mkdir()&&water.mkdir()) {
