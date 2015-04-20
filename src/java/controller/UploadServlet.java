@@ -109,6 +109,7 @@ public class UploadServlet extends HttpServlet {
                         item.write(new File(UPLOAD_DIRECTORY + File.separator + name));
                     }
                 }
+                
                 //File uploaded successfully
 
                 request.setAttribute("message", "File Uploaded Successfully");
