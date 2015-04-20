@@ -166,8 +166,10 @@ public class RegLogDB extends HttpServlet {
         //File file = new File("./PhotoStore/"+mID);
         //File file = new File(".\\PhotoStore\\"+mID);
         File file = new File("."+File.separator+"PhotoStore"+File.separator+mID);
-	if (!file.exists()) {
-		if (file.mkdir()) {
+        File water = new File("."+File.separator+"Watermark"+File.separator+mID);
+        
+	if (!file.exists()&&!water.exists()) {
+		if (file.mkdir()&&water.mkdir()) {
 			System.out.println("Directory is created!");
 		} else {
 			System.out.println("Failed to create directory!");
