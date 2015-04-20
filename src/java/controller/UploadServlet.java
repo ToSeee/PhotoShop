@@ -117,7 +117,6 @@ public class UploadServlet extends HttpServlet {
             } catch (Exception ex) {
                 request.setAttribute("message", "File Upload Failed due to " + ex);
             }
-
         } else {
             request.setAttribute("message",
                     "Sorry this Servlet only handles file upload request");
