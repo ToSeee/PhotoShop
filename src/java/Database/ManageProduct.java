@@ -131,8 +131,22 @@ public class ManageProduct {
             e.printStackTrace();
 
         }
+        
+        
     }
     
+   public int maxID(){
+       int value = 0;
+        try {
+            PreparedStatement max = conn.prepareStatement("select max(P_ID) from product ;");
+            ResultSet rs = max.executeQuery();
+            rs.next();
+            value = rs.getInt(1);
+        } catch (SQLException ex) {
+            Logger.getLogger(ManageProduct.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return value;
+   }
     
     
    
