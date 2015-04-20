@@ -28,24 +28,28 @@ public class LoginServlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             
-            String username = request.getParameter("useranem");
+            String username = request.getParameter("username");
             String pwd = request.getParameter("password");
             
             RegLogDB logDB = new RegLogDB();
             List<String> log = logDB.checkLogin(username, pwd);
             
-            out.print(log.get(0));
+            //out.print(log.get(0));
             
-            /*if(log.get(0).equals("admin") || log.get(0).equals("merchant") || log.get(0).equals("customer")){
+            if(log.get(0).equals("admin") || log.get(0).equals("merchant") || log.get(0).equals("customer")){
                 HttpSession session = request.getSession();
                 session.setAttribute("roll", log.get(0));
-                getServletContext().getRequestDispatcher("Home.jsp").forward(request,response);
+                //getServletContext().getRequestDispatcher("Home.jsp").forward(request,response);
+                //send to home page
+                response.sendRedirect("Home.jsp");
             
             }
             else{
-                getServletContext().getRequestDispatcher("register.html").forward(request,response);
+                //getServletContext().getRequestDispatcher("register.html").forward(request,response);
+                //send back to login and register page
+                response.sendRedirect("LoginNRegister.html");
                 
-            }*/
+            }
             
             
          
