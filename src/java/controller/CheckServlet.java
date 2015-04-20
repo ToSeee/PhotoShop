@@ -42,7 +42,8 @@ public class CheckServlet extends HttpServlet {
             
             Boolean s = (address.equals("")) && (distinct.equals("")) && (province.equals("")) && (zipcode.equals("")) && (country.equals("")) && (ppid.equals(""))  ;
             
-            User regist = new User();
+            User registcus = new User();
+            User registmer = new User();
             RegLogDB Re = new RegLogDB();
             
           
@@ -50,12 +51,15 @@ public class CheckServlet extends HttpServlet {
             if(check == null){
                 //Register for customer
                 regist(id,pwd,name,lname,email,tel);
+                Re.addCustomer(registcus);
             }else if(check.equals("photographer") && s){
                 //Register for photographer
                 regist(id,pwd,name,lname,email,tel,address,distinct,province,zipcode,country,ppid);
+                Re.addMerchant(registmer);
             }else{
                 //Insert data not for photographer but check photographer
-                getServletContext().getRequestDispatcher("/register.html").forward(request,response);
+                //getServletContext().getRequestDispatcher("/register.html").forward(request,response);
+                response.sendRedirect("LoginNRegister.html");
             }
            
             
