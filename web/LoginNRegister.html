@@ -3,61 +3,79 @@
         <meta charset="UTF-8">
         <link href="css/style" rel="stylesheet" type="text/css">
         <style type="text/css" media="all">
-            @import url("CSS/regist.css");
+            @import url("CSS/login.css");
+            @import url("CSS/fixed-navigation-bar.css");
         </style>
     </head>
     <body>
+
+        <nav class="fixed-nav-bar">
+            <div id="menu" class="menu">
+                <!-- Example responsive navigation menu  -->
+                <a class="show" href="#menu">Menu</a><a class="hide" href="#hidemenu">Menu</a>
+                <ul class="menu-items">
+                    <li><a href="//sixrevisions.com">Home</a></li>
+                    <li><a href="//sixrevisions.com/about/">Cart</a></li>
+
+                    <li><a href="//twitter.com/sixrevisions">Sign In</a></li>
+                    <li><a href="//www.facebook.com/sixrevisions">Sign Up</a></li>
+                    <li><a href="//sixrevisions.com/contact/">About</a></li>
+                </ul>
+            </div>
+        </nav>
+
         <div id="loginform">
 
             <div id="mainlogin">
 
 
 
+
                 <h1>Log in </h1>
                 <form action="../login.do" METHOD="POST">
-                    <input type="username" placeholder="username or email" name="username"  style="padding:12px 20px 12px 10px;" required>
-                    <input type="password" placeholder="password" name="password" style="padding:12px 20px 12px 10px;"required>
-                    <button type="login">Login</button>
+                    <input type="text" placeholder="username or email" name="username" style="padding:12px 20px 12px 10px; float:left;" required>
 
-                </form>
-                <div id="note"><a href="forgetpass.do">Forgot your password?</a></div>
+                    <input type="password" placeholder="password" name="password" style="margin-left:5em; padding:12px 20px 12px 10px; float:left;"required>
+
+                    <button type="submit" style="display:block;" >Login</button>
+
+                </form><br><br><br>
+                <div id="note"><a href="#">Forgot your password?</a></div>
             </div>
 
 
         </div>
-
-        <form  action="../check.do" METHOD="POST">
+        <form action="../Home.jsp" METHOD="POST">
             <div id="regisform">
                 <div id="regis">
                     <h1>Register</h1>
 
-                    <input type="ID" placeholder="username" name="id" style="display:block" required>
-                    <input type="password" placeholder="password" name="pwd" style="display:block"required>
-                    <input type="Name" placeholder="name" name="name" style="display:block"required>
-                    <input type="Lastname" placeholder="lastname" name="lname" style="display:block"required>
-                    <input type="Email" placeholder="email" name="email" style="display:block"required>
-                    <input type="Tel" placeholder="phone number" name="tel" style="display:block"required>
+                    <input type="ID" placeholder="username" name="id" style="padding:12px 20px 12px 10px;" required>
+                    <input type="password" placeholder="password" name="pwd" style="margin-left:5em; padding:12px 20px 12px 10px;"required>
+                    <input type="Name" placeholder="name" name="name" style="padding:12px 20px 12px 10px;"required>
+                    <input type="Lastname" placeholder="lastname" name="lname" style="margin-left:5em;padding:12px 20px 12px 10px;"required>
+                    <input type="Email" placeholder="email" name="email" style="padding:12px 20px 12px 10px;"required>
+                    <input type="Tel" placeholder="phone number" name="tel" style="margin-left:5em; padding:12px 20px 12px 10px;"required>
 
                     <h2>*** For Photographer ***</h2>
 
-                    <input type="Address" placeholder="address" name="address"  style="display:block">
-                    <input type="Distinct" placeholder="distinct" name="distinct"  style="display:block">
-                    <input type="Province" placeholder="province" name="province"  style="display:block">
-                    <input type="Zipcode" placeholder="zipcode" name="zipcode"  style="display:block">
-                    <input type="Country" placeholder="country" name="country"  style="display:block">
-                    <input type="PaypalID" placeholder="paypalID" name="ppid"  style="display:block">
+                    <input type="Address" placeholder="address" name="address" style="padding:12px 20px 12px 10px;"required>
+                    <input type="Distinct" placeholder="distinct" name="distinct" style="margin-left:5em; padding:12px 20px 12px 10px;"required>
+                    <input type="Province" placeholder="province" name="province" style="padding:12px 20px 12px 10px;"required>
+                    <input type="Zipcode" placeholder="zipcode" name="zipcode" style="margin-left:5em; padding:12px 20px 12px 10px;"required>
+                    <input type="Country" placeholder="country" name="country" style="padding:12px 20px 12px 10px;"required>
+                    <input type="PaypalID" placeholder="paypalID" name="ppid" style="margin-left:5em; padding:12px 20px 12px 10px;"required>
 
                     <div class="slideThree">
-                        <input type="checkbox" value="photographer" id="slideThree" name="check" onClick="check(this.value);"/><label for="slideThree" ></label>
+                        <input type="checkbox" name="photographer" id="slideThree" name="check" onClick="check(this.value);"/><label for="slideThree" ></label> 
+
 
                     </div> 
-               
-                    <a href="check.do"><input type="submit"  class="sumbtn" >Submit</a>
-                    
-                    
-
+                    <a href="#" class="sumbtn">Submit</a> 
                 </div>
-            </div>
-        </form>  
+
+
+            </div>  
+        </form>
     </body>
 </html>
