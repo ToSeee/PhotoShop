@@ -47,9 +47,9 @@ public class ManageProduct {
 
     public void addProduct(Product photo) {
         try {
-            PreparedStatement pro = conn.prepareStatement("insert into product values(default,?,?,now(),?,default,'Not',?,?,0)");
+            PreparedStatement pro = conn.prepareStatement("insert into product values(default,?,?,now(),?,default,'Not',?,?,0,default)");
             PreparedStatement pID = conn.prepareStatement("select max(p_id) from product");
-            PreparedStatement add = conn.prepareStatement("update product set p_address =? where p_id =?");
+            PreparedStatement add = conn.prepareStatement("update product set p_address =?,p_watermarkurl=? where p_id =?");
             pro.setString(1, photo.getName());
             pro.setDouble(2, photo.getPrice());
             pro.setString(3, photo.getDescription());
@@ -60,7 +60,8 @@ public class ManageProduct {
             rs.next();
             String url = rs.getString(1);
             add.setString(1, "./PhotoStore/" + photo.getmID() + "/" + url + ".jpg");
-            add.setInt(2, Integer.parseInt(url));
+            add.setString(2, "./Watermark/" + photo.getmID() + "water/" + url + ".jpg");
+            add.setInt(3, Integer.parseInt(url));
             add.executeUpdate();
         } catch (SQLException ex) {
             Logger.getLogger(ManageProduct.class.getName()).log(Level.SEVERE, null, ex);
@@ -94,16 +95,18 @@ public class ManageProduct {
     //Delete photo from Database
     public void delProductData(String pID) {
         try {
-            PreparedStatement url = conn.prepareStatement("select p_address from product where p_id =?");
+            PreparedStatement url = conn.prepareStatement("select p_address,p_watermarkurl from product where p_id =?");
             PreparedStatement del = conn.prepareStatement("delete from product where p_id=?");
             ManageProduct manage = new ManageProduct();
             url.setInt(1, Integer.parseInt(pID));
             ResultSet rs = url.executeQuery();
             rs.next();
             String address = rs.getString(1);
+            String watermark = rs.getString(2);
             del.setInt(1, Integer.parseInt(pID));
             del.executeUpdate();
             manage.delPhoto(address);
+            manage.delPhoto(watermark);
 
         } catch (SQLException ex) {
             Logger.getLogger(ManageProduct.class.getName()).log(Level.SEVERE, null, ex);

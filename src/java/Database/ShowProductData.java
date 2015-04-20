@@ -62,9 +62,10 @@ public class ShowProductData {
                 product.setAddress(rs.getString(10));
                 product.setStatus(rs.getString(11));
                 product.setSalecount(rs.getInt(12));
-                product.setmFirstName(rs.getString(13));
-                product.setmLastName(rs.getString(14));
-                product.setSaleAmount(rs.getDouble(28));
+                product.setWatermark(rs.getString(13));
+                product.setmFirstName(rs.getString(14));
+                product.setmLastName(rs.getString(15));
+                product.setSaleAmount(rs.getDouble(29));
                 products.add(product);
             }
         } catch (SQLException ex) {
@@ -98,9 +99,10 @@ public class ShowProductData {
                 product.setAddress(rs.getString(10));
                 product.setStatus(rs.getString(11));
                 product.setSalecount(rs.getInt(12));
-                product.setmFirstName(rs.getString(13));
-                product.setmLastName(rs.getString(14));
-                product.setSaleAmount(rs.getDouble(28));
+                product.setWatermark(rs.getString(13));
+                product.setmFirstName(rs.getString(14));
+                product.setmLastName(rs.getString(15));
+                product.setSaleAmount(rs.getDouble(29));
                 products.add(product);
             }
         } catch (SQLException ex) {
@@ -126,7 +128,7 @@ public class ShowProductData {
                 Product product = new Product();
                 product.setmID(rs.getString(1));
                 product.setCateID(rs.getString(2));
-                product.setCateName(rs.getString(15));
+                product.setCateName(rs.getString(16));
                 
                 product.setId(rs.getString(4));
                 product.setName(rs.getString(5));
@@ -136,8 +138,9 @@ public class ShowProductData {
                 product.setAddress(rs.getString(9));
                 product.setStatus(rs.getString(10));
                 product.setSalecount(rs.getInt(11));
-                product.setmFirstName(rs.getString(17));
-                product.setmLastName(rs.getString(18));
+                product.setWatermark(rs.getString(12));
+                product.setmFirstName(rs.getString(18));
+                product.setmLastName(rs.getString(19));
                 
                 products.add(product);
             }
@@ -170,9 +173,10 @@ public class ShowProductData {
                 product.setAddress(rs.getString(10));
                 product.setStatus(rs.getString(11));
                 product.setSalecount(rs.getInt(12));
-                product.setmFirstName(rs.getString(13));
-                product.setmLastName(rs.getString(14));
-                product.setSaleAmount(rs.getDouble(28));
+                product.setWatermark(rs.getString(13));
+                product.setmFirstName(rs.getString(14));
+                product.setmLastName(rs.getString(15));
+                product.setSaleAmount(rs.getDouble(29));
                 products.add(product);
             }
         } catch (SQLException ex) {
@@ -204,9 +208,10 @@ public class ShowProductData {
                 product.setAddress(rs.getString(10));
                 product.setStatus(rs.getString(11));
                 product.setSalecount(rs.getInt(12));
-                product.setmFirstName(rs.getString(13));
-                product.setmLastName(rs.getString(14));
-                product.setSaleAmount(rs.getDouble(28));
+                product.setWatermark(rs.getString(13));
+                product.setmFirstName(rs.getString(14));
+                product.setmLastName(rs.getString(15));
+                product.setSaleAmount(rs.getDouble(29));
                 products.add(product);
             }
         } catch (SQLException ex) {

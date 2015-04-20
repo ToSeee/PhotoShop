@@ -32,7 +32,7 @@ public class LoginServlet extends HttpServlet {
             String pwd = request.getParameter("password");
             
             RegLogDB logDB = new RegLogDB();
-            List log = logDB.checkLogin(username, pwd);
+            List<String> log = logDB.checkLogin(username, pwd);
             
             //out.print(log.get(0));
             

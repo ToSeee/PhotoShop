@@ -21,6 +21,9 @@ public class Product {
     private String cateID;
     private String mID;
     private int salecount;
+    private String watermark;
+
+   
 
   
 
@@ -159,6 +162,14 @@ public class Product {
 
     public void setSaleAmount(double SaleAmount) {
         this.SaleAmount = SaleAmount;
+    }
+    
+     public String getWatermark() {
+        return watermark;
+    }
+
+    public void setWatermark(String watermark) {
+        this.watermark = watermark;
     }
     
     

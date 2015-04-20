@@ -175,28 +175,10 @@ public class RegLogDB extends HttpServlet {
 	}
     }
 
-   /*public static void main(String[] args) {
-       RegLogDB a = new RegLogDB();
-       List log = a.checkLogin("A","A");
-       System.out.print(log.get(0));
-       
-        
-        
-    
-        
-         //java.util.Date dt = new java.util.Date();
-         //java.text.SimpleDateFormat sdf= new java.text.SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-         //String currentTime = sdf.format(dt);
-    }*/
-    /*public static void main(String[] args){
-        RegLogDB a = new RegLogDB();
-        User user = new User("H", "H", "H", "H", "H", "H");
-        a.addCustomer(user);
-        
-    }*/
-    /*public static void main(String[] args){
-        RegLogDB a = new RegLogDB();
-        a.createFolder("H");
-    }*/
+
+   public static void main(String[] args) {
+
+   }
+
 
 }
