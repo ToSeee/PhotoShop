@@ -4,13 +4,19 @@ package controller;
  *
  * @author HenGz
  */
+import Database.RegLogDB;
 import java.io.IOException;
 import java.io.PrintWriter;
+import static java.nio.file.Files.list;
+import static java.rmi.Naming.list;
+import static java.util.Collections.list;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 
 @WebServlet(name = "LoginServlet", urlPatterns = {"/login.do"})
@@ -25,13 +31,21 @@ public class LoginServlet extends HttpServlet {
             String username = request.getParameter("useranem");
             String pwd = request.getParameter("password");
             
-            if(Login(username,pwd)){
-                getServletContext().getRequestDispatcher("#").forward(request,response);
-                
+            RegLogDB logDB = new RegLogDB();
+            List log = logDB.checkLogin(username, pwd);
+            
+            out.print(log.get(0));
+            
+            /*if(log.get(0).equals("admin") || log.get(0).equals("merchant") || log.get(0).equals("customer")){
+                HttpSession session = request.getSession();
+                session.setAttribute("roll", log.get(0));
+                getServletContext().getRequestDispatcher("Home.jsp").forward(request,response);
+            
             }
             else{
                 getServletContext().getRequestDispatcher("register.html").forward(request,response);
-            }
+                
+            }*/
             
             
          
@@ -77,8 +91,5 @@ public class LoginServlet extends HttpServlet {
         return "Short description";
     }// </editor-fold>
 
-    private boolean Login(String username, String pwd) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
+   
 }

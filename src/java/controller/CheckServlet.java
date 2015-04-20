@@ -6,6 +6,7 @@ package controller;
  */
 
 import Bean.User;
+import Database.RegLogDB;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.RequestDispatcher;
@@ -42,13 +43,14 @@ public class CheckServlet extends HttpServlet {
             Boolean s = (address.equals("")) && (distinct.equals("")) && (province.equals("")) && (zipcode.equals("")) && (country.equals("")) && (ppid.equals(""))  ;
             
             User regist = new User();
+            RegLogDB Re = new RegLogDB();
             
           
             
             if(check == null){
                 //Register for customer
                 regist(id,pwd,name,lname,email,tel);
-            }else if(check.equals("yes") && s){
+            }else if(check.equals("photographer") && s){
                 //Register for photographer
                 regist(id,pwd,name,lname,email,tel,address,distinct,province,zipcode,country,ppid);
             }else{

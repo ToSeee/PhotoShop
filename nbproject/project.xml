@@ -12,10 +12,16 @@
                 </library>
                 <library dirs="200">
                     <file>${libs.File_Upload.classpath}</file>
-                    <path-in-war>WEB-INF/lib</path-in-war>
                 </library>
                 <library dirs="200">
                     <file>${libs.File_IO.classpath}</file>
+                </library>
+                <library dirs="200">
+                    <file>${libs.uploadPH.classpath}</file>
+                    <path-in-war>WEB-INF/lib</path-in-war>
+                </library>
+                <library dirs="200">
+                    <file>${libs.downloadPH.classpath}</file>
                     <path-in-war>WEB-INF/lib</path-in-war>
                 </library>
             </web-module-libraries>
