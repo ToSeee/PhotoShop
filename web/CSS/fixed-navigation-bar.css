@@ -1,3 +1,4 @@
+
 .fixed-nav-bar {
   position: fixed;
   top: 0;
@@ -8,6 +9,7 @@
   height: 50px;
   background-color: #000;
   opacity: 0.7;
+  text-align:center;
   
 }
 

@@ -31,7 +31,7 @@ public class ManageProduct {
     private String db_driver = "com.mysql.jdbc.Driver";
     private String db_url = "jdbc:mysql://localhost:3306/Photo?zeroDateTimeBehavior=convertToNull";
     private String db_user = "root";
-    private String db_pass = "root";
+    private String db_pass = "";
 
     public ManageProduct() {
         try {
@@ -59,8 +59,10 @@ public class ManageProduct {
             ResultSet rs = pID.executeQuery();
             rs.next();
             String url = rs.getString(1);
-            add.setString(1, "./PhotoStore/" + photo.getmID() + "/" + url + ".jpg");
-            add.setString(2, "./Watermark/" + photo.getmID() + "water/" + url + ".jpg");
+            //add.setString(1, "./PhotoStore/" + photo.getmID() + "/" + url + ".jpg");
+            //add.setString(2, "./Watermark/" + photo.getmID() + "water/" + url + ".jpg");
+            add.setString(1 ,".." + File.separator + "PhotoStore" + File.separator + url + ".jpg");
+            add.setString(2, ".." +File.separator + "Watermark" + File.separator + url + ".jpg");
             add.setInt(3, Integer.parseInt(url));
             add.executeUpdate();
         } catch (SQLException ex) {

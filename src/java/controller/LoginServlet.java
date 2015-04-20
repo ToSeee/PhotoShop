@@ -38,10 +38,11 @@ public class LoginServlet extends HttpServlet {
             
             if(log.get(0).equals("admin") || log.get(0).equals("merchant") || log.get(0).equals("customer")){
                 HttpSession session = request.getSession();
-                session.setAttribute("roll", log.get(0));
+                session.setAttribute("role", log.get(0));
+                session.setAttribute("userid", log.get(1));
                 //getServletContext().getRequestDispatcher("Home.jsp").forward(request,response);
                 //send to home page
-                response.sendRedirect("Home.jsp");
+                response.sendRedirect("Upload.html");
             
             }
             else{
