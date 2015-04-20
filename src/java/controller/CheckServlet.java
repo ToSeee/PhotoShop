@@ -25,6 +25,7 @@ public class CheckServlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             
+            
             // all for insert into database
             String id = request.getParameter("id");
             String pwd = request.getParameter("pwd");
@@ -40,13 +41,14 @@ public class CheckServlet extends HttpServlet {
             String ppid = request.getParameter("ppid");
             String check = request.getParameter("check");
             
-            Boolean s = (address.equals("")) && (distinct.equals("")) && (province.equals("")) && (zipcode.equals("")) && (country.equals("")) && (ppid.equals(""))  ;
+            Boolean s = !(address.equals("")) && !(distinct.equals("")) && !(province.equals("")) && !(zipcode.equals("")) && !(country.equals("")) && !(ppid.equals(""))  ;
             
             User registcus = new User(id,pwd,name,lname,email,tel);
             User registmer = new User(id,pwd,name,lname,email,tel,address,distinct,province,zipcode,country,ppid);
             RegLogDB Re = new RegLogDB();
             
-          
+            
+            
             
             if(check == null){
                 //Register for customer
@@ -105,12 +107,5 @@ public class CheckServlet extends HttpServlet {
         return "Short description";
     }// </editor-fold>
 
-    private void regist(String id, String pwd, String name, String lname, String email, String tel) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    private void regist(String id, String pwd, String name, String lname, String email, String tel, String address, String distinct, String province, String zipcode, String country, String ppid) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
 
 }

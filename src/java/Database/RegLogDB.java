@@ -178,9 +178,13 @@ public class RegLogDB extends HttpServlet {
     }
 
 
-   public static void main(String[] args) {
+   /*public static void main(String[] args) {
+       RegLogDB a = new RegLogDB();
+       User user = new User("H","H","H","H","H","H","H","H","H","H","H","H");
+       a.addMerchant(user);
+       
 
-   }
+   }*/
 
 
 }
