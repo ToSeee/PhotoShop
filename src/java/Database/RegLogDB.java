@@ -164,6 +164,7 @@ public class RegLogDB extends HttpServlet {
     public void createFolder(String mID){
         
         File file = new File("./PhotoStore/"+mID);
+        File file2
 	if (!file.exists()) {
 		if (file.mkdir()) {
 			System.out.println("Directory is created!");
@@ -173,15 +174,18 @@ public class RegLogDB extends HttpServlet {
 	}
     }
 
-   /*public static void main(String[] args) {
+   public static void main(String[] args) {
        
         
-        
+        RegLogDB a = new RegLogDB();
+        List b = a.checkLogin("A", "A");
+        System.out.println(b.get(0));
+                
     
         
          //java.util.Date dt = new java.util.Date();
          //java.text.SimpleDateFormat sdf= new java.text.SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
          //String currentTime = sdf.format(dt);
-    }*/
+    }
 
 }
