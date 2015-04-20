@@ -53,7 +53,7 @@
                 <input type="Email" placeholder="email" value=""style="display:block"required>
                 <input type="Tel" placeholder="phone number" value="" style="display:block"required>
 
-                <h2>*** For Photograper ***</h2>
+                <h2>*** For Photographer ***</h2>
 
                 <input type="Address" placeholder="address" value="" style="display:block"required>
                 <input type="Distinct" placeholder="distinct" value="" style="display:block"required>
