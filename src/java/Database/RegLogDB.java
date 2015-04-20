@@ -163,7 +163,9 @@ public class RegLogDB extends HttpServlet {
     
     public void createFolder(String mID){
         
-        File file = new File("./PhotoStore/"+mID);
+        //File file = new File("./PhotoStore/"+mID);
+        //File file = new File(".\\PhotoStore\\"+mID);
+        File file = new File("."+File.separator+"PhotoStore"+File.separator+mID);
 	if (!file.exists()) {
 		if (file.mkdir()) {
 			System.out.println("Directory is created!");
@@ -186,5 +188,15 @@ public class RegLogDB extends HttpServlet {
          //java.text.SimpleDateFormat sdf= new java.text.SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
          //String currentTime = sdf.format(dt);
     }*/
+    /*public static void main(String[] args){
+        RegLogDB a = new RegLogDB();
+        User user = new User("H", "H", "H", "H", "H", "H");
+        a.addCustomer(user);
+        
+    }*/
+    public static void main(String[] args){
+        RegLogDB a = new RegLogDB();
+        a.createFolder("H");
+    }
 
 }
