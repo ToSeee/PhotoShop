@@ -21,6 +21,7 @@ import javax.servlet.http.HttpSession;
 import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
+import watermark.WatermarkImage;
 
 /**
  *
@@ -39,32 +40,31 @@ public class UploadServlet extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     //private final String UPLOAD_DIRECTORY = "/Users/niponsarikan/Desktop/File";
-    private final String UPLOAD_DIRECTORY = "C:\\Users\\HenGzTy\\Desktop";
+    private final String UPLOAD_DIRECTORY = "PhotoStore";
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         PrintWriter out = response.getWriter();
-        /*String namepic = request.getParameter("namepic");
-         Double pricepic = Double.parseDouble(request.getParameter("pricepic"));
-         String catalog = request.getParameter("catalog");
-         String description = request.getParameter("description");
-        
-         HttpSession session = request.getSession();
-         String uid = (String) session.getAttribute("userid");
-        
-         ManageProduct ManagePro = new ManageProduct();
-        
-         Product pd = new Product(namepic, pricepic, description, catalog, uid);
-        
-         ManagePro.addProduct(pd);*/
 
-        //process only if its multipart content
         HttpSession session = request.getSession();
         String uid = (String) session.getAttribute("userid");
 
+        // gets absolute path of the web application
+        String appPath = request.getServletContext().getRealPath("");
+        appPath = appPath.replace(File.separator + "build" + File.separator + "web", "");
+        // constructs path of the directory to save uploaded file
+        String savePath = appPath + File.separator + UPLOAD_DIRECTORY + File.separator + uid;
+        String savePathWaterMark = appPath + File.separator + "Watermark" + File.separator + uid;
+
+        //process only if its multipart content
+        
+        WatermarkImage addMark = new WatermarkImage();
+        
         ManageProduct ManagePro = new ManageProduct();
         Product pd = new Product();
+
+        
 
         if (ServletFileUpload.isMultipartContent(request)) {
             try {
@@ -102,18 +102,29 @@ public class UploadServlet extends HttpServlet {
                     }
                     pd.setmID(uid);
                 }
-                ManagePro.addProduct(pd);
+                ManagePro.addProduct(pd, appPath);
                 for (FileItem item : multiparts) {
                     if (!item.isFormField()) {
-                        String name = new File(item.getName()).getName();
-                        item.write(new File(UPLOAD_DIRECTORY + File.separator + name));
+                        //String name = new File(item.getName()).getName();
+                        String photo_id_main = String.valueOf(ManagePro.maxID());
+                        item.write(new File(savePath + File.separator + photo_id_main + ".jpg"));
+
                     }
                 }
                 
-                //File uploaded successfully
+                String photo_id = String.valueOf(ManagePro.maxID());
 
+                out.print(photo_id + " " + savePath + " " + savePathWaterMark);
+
+                //File uploaded successfully
                 request.setAttribute("message", "File Uploaded Successfully");
 
+                File sourceImageFile = new File(savePath + File.separator + photo_id  + ".jpg");
+                File watermarkImageFile = new File(appPath + File.separator + "web" + File.separator + "water1600.png");
+                File destImageFile = new File(savePathWaterMark + File.separator + photo_id + "_wm.jpg");
+                
+                addMark.addImageWatermark(watermarkImageFile, sourceImageFile, destImageFile);
+                
             } catch (Exception ex) {
                 request.setAttribute("message", "File Upload Failed due to " + ex);
             }
@@ -122,8 +133,8 @@ public class UploadServlet extends HttpServlet {
                     "Sorry this Servlet only handles file upload request");
 
         }
-        // request.getRequestDispatcher("/ResultPage.jsp").forward(request, response);
 
+        // request.getRequestDispatcher("/ResultPage.jsp").forward(request, response);
     }
 
 }

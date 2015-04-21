@@ -4,9 +4,9 @@ package controller;
  *
  * @author HenGz
  */
-
 import Bean.User;
 import Database.RegLogDB;
+import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.RequestDispatcher;
@@ -19,13 +19,15 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet(name = "checkServlet", urlPatterns = {"/check.do"})
 public class CheckServlet extends HttpServlet {
 
-   
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            
-            
+
+            // gets absolute path of the web application
+            String appPath = request.getServletContext().getRealPath("");
+            appPath = appPath.replace(File.separator + "build" + File.separator + "web", "");
+
             // all for insert into database
             String id = request.getParameter("id");
             String pwd = request.getParameter("pwd");
@@ -40,42 +42,37 @@ public class CheckServlet extends HttpServlet {
             String country = request.getParameter("country");
             String ppid = request.getParameter("ppid");
             String check = request.getParameter("check");
-            
-            Boolean s = !(address.equals("")) && !(distinct.equals("")) && !(province.equals("")) && !(zipcode.equals("")) && !(country.equals("")) && !(ppid.equals(""))  ;
-            
-            User registcus = new User(id,pwd,name,lname,email,tel);
-            User registmer = new User(id,pwd,name,lname,email,tel,address,distinct,province,zipcode,country,ppid);
+
+            Boolean s = !(address.equals("")) && !(distinct.equals("")) && !(province.equals("")) && !(zipcode.equals("")) && !(country.equals("")) && !(ppid.equals(""));
+
+            User registcus = new User(id, pwd, name, lname, email, tel);
+            User registmer = new User(id, pwd, name, lname, email, tel, address, distinct, province, zipcode, country, ppid);
             RegLogDB Re = new RegLogDB();
-            
-            
-            
-            
-            if(check == null){
+
+            if (check == null) {
                 //Register for customer
                 Re.addCustomer(registcus);
                 response.sendRedirect("Home.jsp");
-            }else if(check.equals("photographer") && s){
+            } else if (check.equals("photographer") && s) {
                 //Register for photographer
-                Re.addMerchant(registmer);
+                Re.addMerchant(registmer, appPath);
                 response.sendRedirect("Home.jsp");
-            }else{
+            } else {
                 //Insert data not for photographer but check photographer
                 //getServletContext().getRequestDispatcher("/register.html").forward(request,response);
                 response.sendRedirect("LoginNRegister.html");
             }
-           
-            
+
         }
     }
-    
+
     /*public static void main(String[] args) {
-       RegLogDB a = new RegLogDB();
-       User user = new User("H","H","H","H","H@hot","123","H","H","H","H","H","H");
-       a.addMerchant(user);
+     RegLogDB a = new RegLogDB();
+     User user = new User("H","H","H","H","H@hot","123","H","H","H","H","H","H");
+     a.addMerchant(user);
        
 
-    }*/
-
+     }*/
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
@@ -114,6 +111,5 @@ public class CheckServlet extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
-
 
 }
