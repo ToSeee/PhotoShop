@@ -5,9 +5,14 @@
  */
 package Database;
 
+import Bean.ProductSold;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -33,5 +38,16 @@ public class ShowPaymentData {
         }
     }
     
-    //public List 
+    // user for
+    public List showMerchantSale(String mID){
+        List <ProductSold> products = new LinkedList<ProductSold>();
+        try {
+            PreparedStatement show = conn.prepareStatement("select * from order_des natural join product"
+                    + "where m_ID =? and PaymentStatus = 'No' ;");
+            ResultSet rs = show.executeQuery();
+            //while
+        } catch (SQLException ex) {
+            Logger.getLogger(ShowPaymentData.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 }

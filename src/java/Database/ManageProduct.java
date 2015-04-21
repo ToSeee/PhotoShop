@@ -45,7 +45,7 @@ public class ManageProduct {
         }
     }
 
-    public void addProduct(Product photo) {
+    public void addProduct(Product photo,String path) {
         try {
             PreparedStatement pro = conn.prepareStatement("insert into product values(default,?,?,now(),?,default,'Not',?,?,0,default)");
             PreparedStatement pID = conn.prepareStatement("select max(p_id) from product");
@@ -61,8 +61,8 @@ public class ManageProduct {
             String url = rs.getString(1);
             //add.setString(1, "./PhotoStore/" + photo.getmID() + "/" + url + ".jpg");
             //add.setString(2, "./Watermark/" + photo.getmID() + "water/" + url + ".jpg");
-            add.setString(1 ,".." + File.separator + "PhotoStore" + File.separator + url + ".jpg");
-            add.setString(2, ".." +File.separator + "Watermark" + File.separator + url + ".jpg");
+            add.setString(1 ,url + ".jpg");
+            add.setString(2,url + "_wm.jpg");
             add.setInt(3, Integer.parseInt(url));
             add.executeUpdate();
         } catch (SQLException ex) {
@@ -95,9 +95,9 @@ public class ManageProduct {
     }
 
     //Delete photo from Database
-    public void delProductData(String pID) {
+    public void delProductData(String pID,String path) {
         try {
-            PreparedStatement url = conn.prepareStatement("select p_address,p_watermarkurl from product where p_id =?");
+            PreparedStatement url = conn.prepareStatement("select p_address,p_watermarkurl,m_id from product where p_id =?");
             PreparedStatement del = conn.prepareStatement("delete from product where p_id=?");
             ManageProduct manage = new ManageProduct();
             url.setInt(1, Integer.parseInt(pID));
@@ -105,10 +105,11 @@ public class ManageProduct {
             rs.next();
             String address = rs.getString(1);
             String watermark = rs.getString(2);
+            String folder = rs.getString(3);
             del.setInt(1, Integer.parseInt(pID));
             del.executeUpdate();
-            manage.delPhoto(address);
-            manage.delPhoto(watermark);
+            manage.delPhoto(path+File.separator+"PhotoStore"+File.separator+folder+File.separator+address);
+            manage.delPhoto(path+File.separator+"Watermark"+File.separator+folder+File.separator+watermark);
 
         } catch (SQLException ex) {
             Logger.getLogger(ManageProduct.class.getName()).log(Level.SEVERE, null, ex);

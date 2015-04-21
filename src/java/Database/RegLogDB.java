@@ -83,7 +83,7 @@ public class RegLogDB extends HttpServlet {
         }
     }
 
-    public void addMerchant(User merchant) {
+    public void addMerchant(User merchant,String path) {
         try {
             PreparedStatement mer = conn.prepareStatement("insert into merchant values(default,?,?,?,?,?,?,?,?,?,?,?,?,'Yes',now(),0)");
             PreparedStatement max_id = conn.prepareStatement("select max(m_id) from merchant");
@@ -104,7 +104,7 @@ public class RegLogDB extends HttpServlet {
             rs.next();
             String id = rs.getString(1);
             RegLogDB obj = new RegLogDB();
-            obj.createFolder(id);
+            obj.createFolder(path,id);
             
         } catch (SQLException ex) {
             Logger.getLogger(RegLogDB.class.getName()).log(Level.SEVERE, null, ex);
@@ -161,14 +161,12 @@ public class RegLogDB extends HttpServlet {
         return status;
     }
     
-    public void createFolder(String mID){
+    public void createFolder(String path,String mID){
         
-        //File file = new File("./PhotoStore/"+mID);
-        //File file = new File(".\\PhotoStore\\"+mID);
-        //File file = new File("."+File.separator+"PhotoStore"+File.separator+mID);
-        File file = new File("D:"+File.separator+"OTOHP"+File.separator+"PhotoShop"+File.separator+"PhotoStore"+File.separator+mID);
-        //File water = new File("."+File.separator+"Watermark"+File.separator+mID);
-        File water = new File("D:"+File.separator+"OTOHP"+File.separator+"PhotoShop"+File.separator+"Watermark"+File.separator+mID);
+        
+        File file = new File(path+File.separator+"PhotoStore"+File.separator+mID);
+        
+        File water = new File(path+File.separator+"Watermark"+File.separator+mID);
         
 	if (!file.exists()&&!water.exists()) {
 		if (file.mkdir()&&water.mkdir()) {
