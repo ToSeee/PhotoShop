@@ -116,11 +116,11 @@ public class ShowProductData {
         List <Product> products = new LinkedList<Product>();
         try {
             String sql =    "select * " +
-                            "from Product" +
-                            "natural join Order_Des" +
-                            "natural join Purchase_Order " +
-                            "natural join Category natural join Merchant" +
-                            "where Customer_C_ID = ?;";
+                            " from Product" +
+                            " natural join Order_Des" +
+                            " natural join Purchase_Order " +
+                            " natural join Category natural join Merchant" +
+                            " where Customer_C_ID = ?;";
             PreparedStatement data = conn.prepareStatement(sql);
             data.setString(1,cID);
             ResultSet rs = data.executeQuery();
@@ -155,9 +155,9 @@ public class ShowProductData {
         List <Product> products = new LinkedList<Product>();
         try {
             String sql = "select *,P_Price*P_SaleCount \"SaleAmount\" "
-                    + "from Category "
-                    + "natural join Product "
-                    + "natural join merchant where P_Status = 'Not';";
+                    + " from Category "
+                    + " natural join Product "
+                    + " natural join merchant where P_Status = 'Not';";
             PreparedStatement data = conn.prepareStatement(sql);
             ResultSet rs = data.executeQuery();
             while(rs.next()){
@@ -190,9 +190,9 @@ public class ShowProductData {
         List <Product> products = new LinkedList<Product>();
         try {
             String sql = "select *,P_Price*P_SaleCount \"SaleAmount\" "
-                    + "from Category "
-                    + "natural join Product "
-                    + "natural join merchant where P_Status = 'Yes';";
+                    + " from Category "
+                    + " natural join Product "
+                    + " natural join merchant where P_Status = 'Yes';";
             PreparedStatement data = conn.prepareStatement(sql);
             ResultSet rs = data.executeQuery();
             while(rs.next()){

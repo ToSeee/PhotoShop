@@ -110,6 +110,7 @@ public class ManageProduct {
             del.executeUpdate();
             manage.delPhoto(path+File.separator+"PhotoStore"+File.separator+folder+File.separator+address);
             manage.delPhoto(path+File.separator+"Watermark"+File.separator+folder+File.separator+watermark);
+            manage.delPhoto(path+File.separator+"Watermark"+File.separator+folder+File.separator+"re"+address);
 
         } catch (SQLException ex) {
             Logger.getLogger(ManageProduct.class.getName()).log(Level.SEVERE, null, ex);
