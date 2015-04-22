@@ -10,10 +10,12 @@ import javax.imageio.ImageIO;
 
 public class WatermarkImage {
 
-    public void addImageWatermark(File watermarkImageFile, File sourceImageFile, File destImageFile) {
+    public void addImageWatermark(File watermarkImageFile, File sourceImageFile, File destImageFile, File desresize) {
         try {
             BufferedImage sourceImage = ImageIO.read(sourceImageFile);
             BufferedImage watermarkImage = ImageIO.read(watermarkImageFile);
+            int type = sourceImage.getType() == 0 ? BufferedImage.TYPE_INT_ARGB : sourceImage.getType();
+            BufferedImage resizeImageJpg = resizeImage(sourceImage, type);
 
             // initializes necessary graphic properties
             Graphics2D g2d = (Graphics2D) sourceImage.getGraphics();
@@ -28,6 +30,7 @@ public class WatermarkImage {
             g2d.drawImage(watermarkImage, topLeftX, topLeftY, null);
 
             ImageIO.write(sourceImage, "jpg", destImageFile);
+            ImageIO.write(resizeImageJpg, "jpg", desresize);
             g2d.dispose();
 
             System.out.println("The image watermark is added to the image.");
@@ -35,5 +38,35 @@ public class WatermarkImage {
         } catch (IOException ex) {
             System.err.println(ex);
         }
+    }
+
+    private static BufferedImage resizeImage(BufferedImage originalImage, int type) {
+        if (originalImage.getWidth() < originalImage.getHeight()) {
+            BufferedImage resizedImage = new BufferedImage(150, 200, type);
+            Graphics2D g = resizedImage.createGraphics();
+            g.drawImage(originalImage, 0, 0, 150, 200, null);
+            g.dispose();
+
+            return resizedImage;
+        } else if (originalImage.getWidth() > originalImage.getHeight()) {
+            BufferedImage resizedImage = new BufferedImage(200, 150, type);
+            Graphics2D g = resizedImage.createGraphics();
+            g.drawImage(originalImage, 0, 0, 200, 150, null);
+            g.dispose();
+
+            return resizedImage;
+        } else {
+
+            BufferedImage resizedImage = new BufferedImage(150, 150, type);
+            Graphics2D g = resizedImage.createGraphics();
+            g.drawImage(originalImage, 0, 0, 150, 150, null);
+            g.dispose();
+
+            return resizedImage;
+
+        }
+
+        
+
     }
 }

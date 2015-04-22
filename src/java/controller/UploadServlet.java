@@ -122,8 +122,9 @@ public class UploadServlet extends HttpServlet {
                 File sourceImageFile = new File(savePath + File.separator + photo_id  + ".jpg");
                 File watermarkImageFile = new File(appPath + File.separator + "web" + File.separator + "water1600.png");
                 File destImageFile = new File(savePathWaterMark + File.separator + photo_id + "_wm.jpg");
+                File resizeImageWatermark = new File(savePathWaterMark + File.separator +  "re" + photo_id + ".jpg");
                 
-                addMark.addImageWatermark(watermarkImageFile, sourceImageFile, destImageFile);
+                addMark.addImageWatermark(watermarkImageFile, sourceImageFile, destImageFile, resizeImageWatermark);
                 
             } catch (Exception ex) {
                 request.setAttribute("message", "File Upload Failed due to " + ex);
