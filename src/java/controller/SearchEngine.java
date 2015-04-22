@@ -39,7 +39,6 @@ public class SearchEngine {
             conn = DriverManager.getConnection(db_url, db_user, db_pass);
         } catch (SQLException | ClassNotFoundException ex) {
             Logger.getLogger(RegLogDB.class.getName()).log(Level.SEVERE, null, ex);
-
         }
     }
 
